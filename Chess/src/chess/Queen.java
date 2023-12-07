@@ -26,7 +26,7 @@ public class Queen extends Piece{
      * @param testedPosition : la position sur laquelle on souhaite déplacer la dame
      * @return true si c'est un mouvement autorisé par la dame
      */
-    boolean canMoveTo(Plate plate, int [] testedPosition){
+    public boolean canMoveTo(Plate plate, int [] testedPosition){
         int [] actualPosition = this.getPosition(plate);
         if (actualPosition[0] == testedPosition[0] && actualPosition[1] == testedPosition[1]){
             return false;

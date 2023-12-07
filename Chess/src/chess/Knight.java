@@ -25,7 +25,7 @@ public class Knight extends Piece{
      * @param testedPosition : la position sur laquelle on souhaite déplacer le cavalier
      * @return true si c'est un mouvement autorisé par le cavalier
      */
-    boolean canMoveTo(Plate plate, int [] testedPosition){
+    public boolean canMoveTo(Plate plate, int [] testedPosition){
         int [] actualPosition = this.getPosition(plate);
         if ((Math.abs(actualPosition[0] - testedPosition[0]) == 1 && Math.abs(actualPosition[1] - testedPosition[1]) == 2)
                 ||(Math.abs(actualPosition[0] - testedPosition[0]) == 2 && Math.abs(actualPosition[1] - testedPosition[1]) == 1)){

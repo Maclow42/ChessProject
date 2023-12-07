@@ -26,7 +26,7 @@ public class King extends Piece{
      * @param testedPosition : la position sur laquelle on souhaite déplacer le roi
      * @return true si c'est un mouvement autorisé par le roi
      */
-    boolean canMoveTo(Plate plate, int [] testedPosition){
+    public boolean canMoveTo(Plate plate, int [] testedPosition){
         int [] actualPosition = this.getPosition(plate);
         if ((Math.abs(actualPosition[0] - testedPosition[0]) == 1 && Math.abs(actualPosition[1] - testedPosition[1]) == 1) 
                 || (actualPosition[0] == testedPosition[0] && Math.abs(actualPosition[1] - testedPosition[1]) == 1)

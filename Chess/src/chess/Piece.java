@@ -8,11 +8,11 @@ package chess;
  *
  * @author PCdePret_2
  */
-public class Piece {
+public abstract class Piece {
     
     // couleur de la pièce : true pour blanc, false pour noir
-    boolean colourPiece;
-    
+    protected boolean colourPiece;
+    protected boolean etat;
     /**
      * type de pièce :
      * 0 : pion
@@ -22,7 +22,7 @@ public class Piece {
      * 4 : dame
      * 5 : roi
      */
-    int typePiece;
+    protected int typePiece;
    
     
     /**
@@ -34,13 +34,24 @@ public class Piece {
     Piece(boolean colourPiece, int typePiece){
         this.colourPiece = colourPiece;
         this.typePiece = typePiece;
+        this.etat = true;
     }
     
     int [] getPosition(Plate plate){
         return plate.getPositionPiece(this);
     }
     
-    boolean getColour(){
+    boolean getColourPiece(){
         return this.colourPiece;
     }
+    
+    boolean getEtat(){
+        return etat;
+    }
+    
+    int getTypePiece(){
+        return typePiece;
+    }
+    
+    public abstract boolean canMoveTo(Plate plate, int [] testedPosition);
 }

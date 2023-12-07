@@ -27,7 +27,7 @@ public class Pawn extends Piece{
      * @param testedPosition : la position sur laquelle on souhaite déplacer le pion
      * @return true si c'est un mouvement autorisé par le pion
      */
-    boolean canMoveTo(Plate plate, int [] testedPosition){
+    public boolean canMoveTo(Plate plate, int [] testedPosition){
         //récupère la position du pion
         int [] actualPosition = this.getPosition(plate);
          /**
