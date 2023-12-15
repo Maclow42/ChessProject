@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Plate {
     //Echiquier : matrice 8*8
-    private Piece [][] matrixPlate;
+    public Piece [][] matrixPlate;
     //Prochain jour à jouer. Les blancs (true) commencent
     private boolean nextToPlay;
     
@@ -36,41 +36,41 @@ public class Plate {
         
         //Pieces noirs
         matrixPlate[0][0] = new Rook(false,1); 
-        matrixPlate[0][1] = new Knight(false,2);
-        matrixPlate[0][2] = new Bishop(false,3);
-        matrixPlate[0][3] = new Queen(false,4);
-        matrixPlate[0][4] = new King(false,5);
-        matrixPlate[0][5] = new Bishop(false,3);
-        matrixPlate[0][6] = new Knight(false,2);
-        matrixPlate[0][7] = new Rook(false,1);
+        matrixPlate[1][0] = new Knight(false,2);
+        matrixPlate[2][0] = new Bishop(false,3);
+        matrixPlate[3][0] = new Queen(false,4);
+        matrixPlate[4][0] = new King(false,5);
+        matrixPlate[5][0] = new Bishop(false,3);
+        matrixPlate[6][0] = new Knight(false,2);
+        matrixPlate[7][0] = new Rook(false,1);
         //Pions noirs
-        matrixPlate[1][0] = new Pawn(false,0);
+        matrixPlate[0][1] = new Pawn(false,0);
         matrixPlate[1][1] = new Pawn(false,0);
-        matrixPlate[1][2] = new Pawn(false,0);
-        matrixPlate[1][3] = new Pawn(false,0);
-        matrixPlate[1][4] = new Pawn(false,0);
-        matrixPlate[1][5] = new Pawn(false,0);
-        matrixPlate[1][6] = new Pawn(false,0);
-        matrixPlate[1][7] = new Pawn(false,0);
+        matrixPlate[2][1] = new Pawn(false,0);
+        matrixPlate[3][1] = new Pawn(false,0);
+        matrixPlate[4][1] = new Pawn(false,0);
+        matrixPlate[5][1] = new Pawn(false,0);
+        matrixPlate[6][1] = new Pawn(false,0);
+        matrixPlate[7][1] = new Pawn(false,0);
         
         //Pieces blanches
-        matrixPlate[7][0] = new Rook(true,1);
-        matrixPlate[7][1] = new Knight(true,2);
-        matrixPlate[7][2] = new Bishop(true,3);
-        matrixPlate[7][3] = new Queen(true,4);
-        matrixPlate[7][4] = new King(true,5);
-        matrixPlate[7][5] = new Bishop(true,3);
-        matrixPlate[7][6] = new Knight(true,2);
+        matrixPlate[0][7] = new Rook(true,1);
+        matrixPlate[1][7] = new Knight(true,2);
+        matrixPlate[2][7] = new Bishop(true,3);
+        matrixPlate[3][7] = new Queen(true,4);
+        matrixPlate[4][7] = new King(true,5);
+        matrixPlate[5][7] = new Bishop(true,3);
+        matrixPlate[6][7] = new Knight(true,2);
         matrixPlate[7][7] = new Rook(true,1);
         //Pions blancs
-        matrixPlate[6][0] = new Pawn(true,0);
-        matrixPlate[6][1] = new Pawn(true,0);
-        matrixPlate[6][2] = new Pawn(true,0);
-        matrixPlate[6][3] = new Pawn(true,0);
-        matrixPlate[6][4] = new Pawn(true,0);
-        matrixPlate[6][5] = new Pawn(true,0);
+        matrixPlate[0][6] = new Pawn(true,0);
+        matrixPlate[1][6] = new Pawn(true,0);
+        matrixPlate[2][6] = new Pawn(true,0);
+        matrixPlate[3][6] = new Pawn(true,0);
+        matrixPlate[4][6] = new Pawn(true,0);
+        matrixPlate[5][6] = new Pawn(true,0);
         matrixPlate[6][6] = new Pawn(true,0);
-        matrixPlate[6][7] = new Pawn(true,0);
+        matrixPlate[7][6] = new Pawn(true,0);
     }
     
     /**
@@ -110,13 +110,12 @@ public class Plate {
             if (matrixPlate[x2][y2] != null){ 
                 //matrixPlate[x][y].etat = false;
             }
-
             matrixPlate[x2][y2] = piece;
             matrixPlate[x1][y1] = null; //On degage la piece si elle est bougée
             nextToPlay = !nextToPlay; //On inverse NextToPlay
-              
+            return true;  
         }
-        return true;  
+        return false;  
     }
     
     /**
@@ -125,14 +124,14 @@ public class Plate {
      * @return un tableau d'entiers contenant les deux coordonnées
      */
     public int[] getPositionPiece(Piece piece) {
-            for (int i = 0; i < matrixPlate.length; i++) {
-                for (int j = 0; j < matrixPlate[i].length; j++) {
-                    if (matrixPlate[i][j] == piece) {
-                        return new int[]{i, j};
-                    }
+        for (int i = 0; i < matrixPlate.length; i++) {
+            for (int j = 0; j < matrixPlate[i].length; j++) {
+                if (matrixPlate[i][j] == piece) {
+                    return new int[]{i, j};
                 }
             }
-            return null; // Retourne null si l'objet n'est pas trouvé
+        }
+        return null; // Retourne null si l'objet n'est pas trouvé
     }
     
     public boolean getPieceBetween(Piece piece, int[] positionToGo){
