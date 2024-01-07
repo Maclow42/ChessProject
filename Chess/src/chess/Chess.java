@@ -15,12 +15,17 @@ public class Chess {
      */
     public static void main(String[] args) {
         Plate plateau = new Plate();
-        int [] testedPosition1 = {2,1};
+        int [] testedPosition1 = {2,2};
         
-        King roi = new King(true, 5);
-        boolean test1 = roi.canMoveTo(plateau, testedPosition1);
+        Piece c1 = plateau.matrixPlate[1][0];
+        boolean test1 = plateau.movePiece(c1, testedPosition1);
         System.out.println(test1);
         
+        
+        Piece test2 = plateau.matrixPlate[2][2];
+        System.out.println(test2);
+        
+        /*
         Queen dame = new Queen(true, 4);
         boolean test2 = dame.canMoveTo(plateau, testedPosition1);
         System.out.println(test2);
@@ -44,6 +49,7 @@ public class Chess {
         Pawn pionNoir = new Pawn(false, 0);
         boolean test7 = pionNoir.canMoveTo(plateau, testedPosition1);
         System.out.println(test7);
+        */
         
     }
     
