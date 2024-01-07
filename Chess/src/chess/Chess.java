@@ -22,8 +22,8 @@ public class Chess {
         System.out.println(test1);
         
         
-        Piece test2 = plateau.matrixPlate[2][2];
-        System.out.println(test2);
+        Piece test2 = plateau.matrixPlate[2][0];
+        System.out.println(test2.colour);
         
         /*
         Queen dame = new Queen(true, 4);
