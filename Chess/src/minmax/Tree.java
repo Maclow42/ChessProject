@@ -1,4 +1,4 @@
-package chess;
+package minmax;
 
 import java.util.ArrayList;
 
