@@ -15,8 +15,8 @@ public class Knight extends Piece{
      * @param colourPiece
      * @param typePiece 
      */
-    Knight(boolean colourPiece, int typePiece) {
-        super(colourPiece, typePiece);
+    Knight(boolean colourPiece) {
+        super(colourPiece, Piece.pieceType.KNIGHT);
     }
     
     /**

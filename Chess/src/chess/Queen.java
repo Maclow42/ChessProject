@@ -16,8 +16,8 @@ public class Queen extends Piece{
      * @param colourPiece
      * @param typePiece 
      */
-    Queen(boolean colourPiece, int typePiece) {
-        super(colourPiece, typePiece);
+    Queen(boolean colourPiece) {
+        super(colourPiece, Piece.pieceType.QUEEN);
     }
     
     /**

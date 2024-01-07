@@ -9,16 +9,13 @@ package chess;
  * @author PCdePret_2
  */
 public class Pawn extends Piece{
-    
-    boolean isFirstMove;  
     /**
      * Constructeur
      * @param colourPiece
      * @param typePiece 
      */
-    Pawn (boolean colourPiece, int typePiece){
-        super(colourPiece, typePiece);
-        this.isFirstMove = true;
+    Pawn (boolean colourPiece){
+        super(colourPiece, Piece.pieceType.PAWN);
     }
     
     /**

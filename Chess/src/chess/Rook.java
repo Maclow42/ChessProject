@@ -15,8 +15,8 @@ public class Rook extends Piece{
      * @param colourPiece
      * @param typePiece 
      */
-    Rook(boolean colourPiece, int typePiece){
-        super(colourPiece, typePiece);
+    Rook(boolean colourPiece){
+        super(colourPiece, Piece.pieceType.ROOK);
     }
     
     /**

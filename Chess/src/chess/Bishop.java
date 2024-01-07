@@ -15,8 +15,8 @@ public class Bishop extends Piece{
      * @param colourPiece
      * @param typePiece 
      */
-    Bishop(boolean colourPiece, int typePiece) {
-        super(colourPiece, typePiece);
+    Bishop(boolean colourPiece) {
+        super(colourPiece, Piece.pieceType.BISHOP);
     }
     
     /**

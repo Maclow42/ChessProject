@@ -13,16 +13,21 @@ public abstract class Piece {
     // couleur de la pièce : true pour blanc, false pour noir
     protected boolean colourPiece;
     protected boolean etat;
-    /**
-     * type de pièce :
-     * 0 : pion
-     * 1 : tour
-     * 2 : cavalier
-     * 3 : fou
-     * 4 : dame
-     * 5 : roi
-     */
-    protected int typePiece;
+    
+    protected static enum pieceType{
+    	PAWN,
+    	ROOK,
+    	KNIGHT,
+    	BISHOP,
+    	QUEEN,
+    	KING
+    };
+    
+    public static pieceType[] pieceTypeArray = pieceType.values();
+    
+    protected pieceType type;
+    
+    protected boolean firstMove;
    
     
     /**
@@ -31,10 +36,11 @@ public abstract class Piece {
      * @param typePiece 
      */
     
-    Piece(boolean colourPiece, int typePiece){
+    Piece(boolean colourPiece, pieceType type){
         this.colourPiece = colourPiece;
-        this.typePiece = typePiece;
+        this.type = type;
         this.etat = true;
+        this.firstMove = true;
     }
     
     int [] getPosition(Plate plate){
@@ -49,8 +55,12 @@ public abstract class Piece {
         return etat;
     }
     
-    int getTypePiece(){
-        return typePiece;
+    pieceType getTypePiece(){
+        return this.type;
+    }
+    
+    public boolean isFirstMove(){
+    	return this.firstMove;
     }
     
     public abstract boolean canMoveTo(Plate plate, int [] testedPosition);

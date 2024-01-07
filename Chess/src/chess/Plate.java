@@ -35,42 +35,30 @@ public class Plate {
         this.matrixPlate = new Piece[8][8];
         
         //Pieces noirs
-        matrixPlate[0][0] = new Rook(false,1); 
-        matrixPlate[1][0] = new Knight(false,2);
-        matrixPlate[2][0] = new Bishop(false,3);
-        matrixPlate[3][0] = new Queen(false,4);
-        matrixPlate[4][0] = new King(false,5);
-        matrixPlate[5][0] = new Bishop(false,3);
-        matrixPlate[6][0] = new Knight(false,2);
-        matrixPlate[7][0] = new Rook(false,1);
+        matrixPlate[0][0] = new Rook(false); 
+        matrixPlate[1][0] = new Knight(false);
+        matrixPlate[2][0] = new Bishop(false);
+        matrixPlate[3][0] = new Queen(false);
+        matrixPlate[4][0] = new King(false);
+        matrixPlate[5][0] = new Bishop(false);
+        matrixPlate[6][0] = new Knight(false);
+        matrixPlate[7][0] = new Rook(false);
         //Pions noirs
-        matrixPlate[0][1] = new Pawn(false,0);
-        matrixPlate[1][1] = new Pawn(false,0);
-        matrixPlate[2][1] = new Pawn(false,0);
-        matrixPlate[3][1] = new Pawn(false,0);
-        matrixPlate[4][1] = new Pawn(false,0);
-        matrixPlate[5][1] = new Pawn(false,0);
-        matrixPlate[6][1] = new Pawn(false,0);
-        matrixPlate[7][1] = new Pawn(false,0);
+        for(int i = 0; i <= 7; i++)
+        	matrixPlate[i][1] = new Pawn(false);
         
         //Pieces blanches
-        matrixPlate[0][7] = new Rook(true,1);
-        matrixPlate[1][7] = new Knight(true,2);
-        matrixPlate[2][7] = new Bishop(true,3);
-        matrixPlate[3][7] = new Queen(true,4);
-        matrixPlate[4][7] = new King(true,5);
-        matrixPlate[5][7] = new Bishop(true,3);
-        matrixPlate[6][7] = new Knight(true,2);
-        matrixPlate[7][7] = new Rook(true,1);
+        matrixPlate[0][7] = new Rook(true);
+        matrixPlate[1][7] = new Knight(true);
+        matrixPlate[2][7] = new Bishop(true);
+        matrixPlate[3][7] = new Queen(true);
+        matrixPlate[4][7] = new King(true);
+        matrixPlate[5][7] = new Bishop(true);
+        matrixPlate[6][7] = new Knight(true);
+        matrixPlate[7][7] = new Rook(true);
         //Pions blancs
-        matrixPlate[0][6] = new Pawn(true,0);
-        matrixPlate[1][6] = new Pawn(true,0);
-        matrixPlate[2][6] = new Pawn(true,0);
-        matrixPlate[3][6] = new Pawn(true,0);
-        matrixPlate[4][6] = new Pawn(true,0);
-        matrixPlate[5][6] = new Pawn(true,0);
-        matrixPlate[6][6] = new Pawn(true,0);
-        matrixPlate[7][6] = new Pawn(true,0);
+        for(int i = 0; i <= 7; i++)
+        	matrixPlate[i][6] = new Pawn(true);
     }
     
     /**
