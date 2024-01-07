@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package chess;
-
+import chess.Piece.*;
 /**
  *
  * @author PCdePret_2
@@ -15,50 +15,45 @@ public class Plate {
     //Echiquier : matrice 8*8
     public Piece [][] matrixPlate;
     //Prochain jour à jouer. Les blancs (true) commencent
-    private boolean nextToPlay;
-    
-    /**
-     * type de pièce :
-     * 0 : pion
-     * 1 : tour
-     * 2 : cavalier
-     * 3 : fou
-     * 4 : dame
-     * 5 : roi
-     */
+    private colourPiece nextToPlay;
+    private int[] whiteKingPosition;
+    private int[] blackKingPosition;
     
     /**
      * Constructeur
      */
     public Plate(){
-        this.nextToPlay = true;
+        this.nextToPlay = colourPiece.WHITE;
         this.matrixPlate = new Piece[8][8];
         
+        
         //Pieces noirs
-        matrixPlate[0][0] = new Rook(Piece.colourPiece.WHITE); 
-        matrixPlate[1][0] = new Knight(Piece.colourPiece.WHITE);
-        matrixPlate[2][0] = new Bishop(Piece.colourPiece.WHITE);
-        matrixPlate[3][0] = new Queen(Piece.colourPiece.WHITE);
-        matrixPlate[4][0] = new King(Piece.colourPiece.WHITE);
-        matrixPlate[5][0] = new Bishop(Piece.colourPiece.WHITE);
-        matrixPlate[6][0] = new Knight(Piece.colourPiece.WHITE);
-        matrixPlate[7][0] = new Rook(Piece.colourPiece.WHITE);
+        matrixPlate[0][0] = new Rook(colourPiece.WHITE); 
+        matrixPlate[1][0] = new Knight(colourPiece.WHITE);
+        matrixPlate[2][0] = new Bishop(colourPiece.WHITE);
+        matrixPlate[3][0] = new Queen(colourPiece.WHITE);
+        matrixPlate[4][0] = new King(colourPiece.WHITE);
+        this.blackKingPosition = new int[]{4,0};
+        matrixPlate[5][0] = new Bishop(colourPiece.WHITE);
+        matrixPlate[6][0] = new Knight(colourPiece.WHITE);
+        matrixPlate[7][0] = new Rook(colourPiece.WHITE);
         //Pions noirs
         for(int i = 0; i <= 7; i++)
-        	matrixPlate[i][1] = new Pawn(Piece.colourPiece.WHITE);
+        	matrixPlate[i][1] = new Pawn(colourPiece.WHITE);
         
         //Pieces blanches
-        matrixPlate[0][7] = new Rook(Piece.colourPiece.BLACK);
-        matrixPlate[1][7] = new Knight(Piece.colourPiece.BLACK);
-        matrixPlate[2][7] = new Bishop(Piece.colourPiece.BLACK);
-        matrixPlate[3][7] = new Queen(Piece.colourPiece.BLACK);
-        matrixPlate[4][7] = new King(Piece.colourPiece.BLACK);
-        matrixPlate[5][7] = new Bishop(Piece.colourPiece.BLACK);
-        matrixPlate[6][7] = new Knight(Piece.colourPiece.BLACK);
-        matrixPlate[7][7] = new Rook(Piece.colourPiece.BLACK);
+        matrixPlate[0][7] = new Rook(colourPiece.BLACK);
+        matrixPlate[1][7] = new Knight(colourPiece.BLACK);
+        matrixPlate[2][7] = new Bishop(colourPiece.BLACK);
+        matrixPlate[3][7] = new Queen(colourPiece.BLACK);
+        matrixPlate[4][7] = new King(colourPiece.BLACK);
+        this.whiteKingPosition = new int[]{4,7};
+        matrixPlate[5][7] = new Bishop(colourPiece.BLACK);
+        matrixPlate[6][7] = new Knight(colourPiece.BLACK);
+        matrixPlate[7][7] = new Rook(colourPiece.BLACK);
         //Pions blancs
         for(int i = 0; i <= 7; i++)
-        	matrixPlate[i][6] = new Pawn(Piece.colourPiece.BLACK);
+        	matrixPlate[i][6] = new Pawn(colourPiece.BLACK);
     }
     
     /**
@@ -100,7 +95,17 @@ public class Plate {
             }
             matrixPlate[x2][y2] = piece;
             matrixPlate[x1][y1] = null; //On degage la piece si elle est bougée
-            nextToPlay = !nextToPlay; //On inverse NextToPlay
+            
+            //On inverse NextToPlay
+            nextToPlay = (nextToPlay == colourPiece.BLACK) ? colourPiece.WHITE : colourPiece.BLACK;
+            
+            //Si on bouge un roi, on met à jour sa position dans white/blackKingPosition
+            if (piece.type == pieceType.KING){
+                switch(piece.colour){
+                    case BLACK -> whiteKingPosition = positionToGo;
+                    default -> blackKingPosition = positionToGo;
+                }
+            }
             return true;  
         }
         return false;  
@@ -185,7 +190,29 @@ public class Plate {
         
         return positionsBetween; 
     }
+    /**
+     * Renvoie la liste des positions accessibles à une piece
+     * @param pièce
+     * @return une ArrayList de tableau d'entiers à deux composantes (abscisse, ordonnées)
+     */
+    public ArrayList<int []> listPositionAccessible(Piece piece){
+        ArrayList<int[]> listPositionAccessible = new ArrayList();
+        for(int x = 0; x < 8; x++){
+            for(int y = 0; y < 8; y++){
+                int [] testedPosition = {x,y}; 
+                if(this.canMovePiece(piece, testedPosition)){
+                    listPositionAccessible.add(testedPosition);
+                }
+            }
+        }
+        return listPositionAccessible;
+    }
+
+    public Piece.colourPiece getNextToPlay() {
+        return nextToPlay;
+    }
     
+   
 }
     
     
