@@ -212,6 +212,20 @@ public class Plate {
         return nextToPlay;
     }
     
+    public boolean isKingInChess(King king){
+        int[] positionToGo = (king.colour == colourPiece.BLACK) ? blackKingPosition : whiteKingPosition;
+        for(int x = 0; x < 8; x++){
+            for(int y = 0; y < 8; y++){
+                if(matrixPlate[x][y].colour != king.colour){
+                    if(this.canMovePiece(matrixPlate[x][y], whiteKingPosition)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
    
 }
     
