@@ -4,6 +4,7 @@
  */
 package chess;
 
+
 /**
  *
  * @author PCdePret_2
@@ -15,8 +16,8 @@ public class Rook extends Piece{
      * @param colourPiece
      * @param typePiece 
      */
-    Rook(boolean colourPiece){
-        super(colourPiece, Piece.pieceType.ROOK);
+    Rook (colourPiece colour) {
+        super(colour, Piece.pieceType.ROOK);
     }
     
     /**

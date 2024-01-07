@@ -14,8 +14,8 @@ public class Pawn extends Piece{
      * @param colourPiece
      * @param typePiece 
      */
-    Pawn (boolean colourPiece){
-        super(colourPiece, Piece.pieceType.PAWN);
+    Pawn (colourPiece colour) {
+        super(colour, Piece.pieceType.PAWN);
     }
     
     /**
@@ -33,7 +33,7 @@ public class Pawn extends Piece{
          * On sépare donc les cas : pion blanc et pion noir
          */
         //si le pion est noir
-        if (colourPiece == false){
+        if (colour == Piece.colourPiece.BLACK){
             //teste si la position testée est juste devant le pion
             if ((actualPosition[0] == testedPosition[0]) && (actualPosition[1] == testedPosition[1] - 1)){
                 return true;

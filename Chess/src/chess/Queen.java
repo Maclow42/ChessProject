@@ -5,6 +5,7 @@
 package chess;
 
 import java.lang.Math;
+
 /**
  *
  * @author PCdePret_2
@@ -16,8 +17,8 @@ public class Queen extends Piece{
      * @param colourPiece
      * @param typePiece 
      */
-    Queen(boolean colourPiece) {
-        super(colourPiece, Piece.pieceType.QUEEN);
+    Queen (colourPiece colour) {
+        super(colour, Piece.pieceType.QUEEN);
     }
     
     /**

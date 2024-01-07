@@ -35,30 +35,30 @@ public class Plate {
         this.matrixPlate = new Piece[8][8];
         
         //Pieces noirs
-        matrixPlate[0][0] = new Rook(false); 
-        matrixPlate[1][0] = new Knight(false);
-        matrixPlate[2][0] = new Bishop(false);
-        matrixPlate[3][0] = new Queen(false);
-        matrixPlate[4][0] = new King(false);
-        matrixPlate[5][0] = new Bishop(false);
-        matrixPlate[6][0] = new Knight(false);
-        matrixPlate[7][0] = new Rook(false);
+        matrixPlate[1][0] = new Knight(Piece.colourPiece.BLACK);
+        matrixPlate[0][0] = new Rook(Piece.colourPiece.BLACK); 
+        matrixPlate[2][0] = new Bishop(Piece.colourPiece.BLACK);
+        matrixPlate[3][0] = new Queen(Piece.colourPiece.BLACK);
+        matrixPlate[4][0] = new King(Piece.colourPiece.BLACK);
+        matrixPlate[5][0] = new Bishop(Piece.colourPiece.BLACK);
+        matrixPlate[6][0] = new Knight(Piece.colourPiece.BLACK);
+        matrixPlate[7][0] = new Rook(Piece.colourPiece.BLACK);
         //Pions noirs
         for(int i = 0; i <= 7; i++)
-        	matrixPlate[i][1] = new Pawn(false);
+        	matrixPlate[i][1] = new Pawn(Piece.colourPiece.BLACK);
         
         //Pieces blanches
-        matrixPlate[0][7] = new Rook(true);
-        matrixPlate[1][7] = new Knight(true);
-        matrixPlate[2][7] = new Bishop(true);
-        matrixPlate[3][7] = new Queen(true);
-        matrixPlate[4][7] = new King(true);
-        matrixPlate[5][7] = new Bishop(true);
-        matrixPlate[6][7] = new Knight(true);
-        matrixPlate[7][7] = new Rook(true);
+        matrixPlate[0][7] = new Rook(Piece.colourPiece.WHITE);
+        matrixPlate[1][7] = new Knight(Piece.colourPiece.WHITE);
+        matrixPlate[2][7] = new Bishop(Piece.colourPiece.WHITE);
+        matrixPlate[3][7] = new Queen(Piece.colourPiece.WHITE);
+        matrixPlate[4][7] = new King(Piece.colourPiece.WHITE);
+        matrixPlate[5][7] = new Bishop(Piece.colourPiece.WHITE);
+        matrixPlate[6][7] = new Knight(Piece.colourPiece.WHITE);
+        matrixPlate[7][7] = new Rook(Piece.colourPiece.WHITE);
         //Pions blancs
         for(int i = 0; i <= 7; i++)
-        	matrixPlate[i][6] = new Pawn(true);
+        	matrixPlate[i][6] = new Pawn(Piece.colourPiece.WHITE);
     }
     
     /**

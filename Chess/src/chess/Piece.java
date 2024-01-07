@@ -10,8 +10,6 @@ package chess;
  */
 public abstract class Piece {
     
-    // couleur de la pièce : true pour blanc, false pour noir
-    protected boolean colourPiece;
     protected boolean etat;
     
     protected static enum pieceType{
@@ -26,6 +24,13 @@ public abstract class Piece {
     public static pieceType[] pieceTypeArray = pieceType.values();
     
     protected pieceType type;
+
+    protected static enum colourPiece{
+    	WHITE,
+    	BLACK
+    };
+    
+    protected colourPiece colour;
     
     protected boolean firstMove;
    
@@ -36,8 +41,8 @@ public abstract class Piece {
      * @param typePiece 
      */
     
-    Piece(boolean colourPiece, pieceType type){
-        this.colourPiece = colourPiece;
+    Piece(colourPiece colour, pieceType type){
+        this.colour = colour;
         this.type = type;
         this.etat = true;
         this.firstMove = true;
@@ -47,8 +52,8 @@ public abstract class Piece {
         return plate.getPositionPiece(this);
     }
     
-    boolean getColourPiece(){
-        return this.colourPiece;
+    colourPiece getColourPiece(){
+        return this.colour;
     }
     
     boolean getEtat(){

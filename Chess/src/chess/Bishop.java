@@ -4,6 +4,7 @@
  */
 package chess;
 
+
 /**
  *
  * @author PCdePret_2
@@ -15,8 +16,8 @@ public class Bishop extends Piece{
      * @param colourPiece
      * @param typePiece 
      */
-    Bishop(boolean colourPiece) {
-        super(colourPiece, Piece.pieceType.BISHOP);
+    Bishop (colourPiece colour) {
+        super(colour, Piece.pieceType.BISHOP);
     }
     
     /**
