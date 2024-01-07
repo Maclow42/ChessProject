@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Chess/src"/>
+	<classpathentry kind="lib" path="Chess/dist/Chess.jar"/>
+	<classpathentry kind="output" path="Chess/build/classes"/>
+</classpath>
