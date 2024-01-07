@@ -4,6 +4,7 @@
  */
 package chess;
 
+import java.util.ArrayList;
 
 /**
  *
@@ -35,5 +36,58 @@ public class Bishop extends Piece{
             return true;
         }
         return false;
+    }
+    
+    public static ArrayList<int[]> getAccessiblePositions(Plate plate, int[] currentPos) {
+    	int cx = currentPos[0], cy = currentPos[1];
+    	
+    	if(plate.matrixPlate[cx][cy] == null)
+    		return null;
+    	
+    	colourPiece colour = plate.matrixPlate[cx][cy].colour;
+    	
+    	ArrayList<int[]> result = new ArrayList<int[]>();
+    	
+    	int i = 1;
+    	while(cx+i < 8 && cy+i < 8) {
+    		if(plate.matrixPlate[cx+i][cy+i] == null)
+    			result.add(new int[] {cx+i, cy+i});
+    		else if(plate.matrixPlate[cx+i][cy+i].colour != colour) {
+    			result.add(new int[] {cx+i, cy+i});
+    			break;
+    		}	
+    	}
+    	
+    	i = 1;
+    	while(cx+i < 8 && cy-i >= 0) {
+    		if(plate.matrixPlate[cx+i][cy-i] == null)
+    			result.add(new int[] {cx+i, cy-i});
+    		else if(plate.matrixPlate[cx+i][cy-i].colour != colour) {
+    			result.add(new int[] {cx+i, cy-i});
+    			break;
+    		}	
+    	}
+    	
+    	i = 1;
+    	while(cx-i >= 8 && cy-i >= 0) {
+    		if(plate.matrixPlate[cx-i][cy-i] == null)
+    			result.add(new int[] {cx-i, cy-i});
+    		else if(plate.matrixPlate[cx-i][cy-i].colour != colour) {
+    			result.add(new int[] {cx-i, cy-i});
+    			break;
+    		}	
+    	}
+    	
+    	i = 1;
+    	while(cx-i >= 8 && cy+i < 8) {
+    		if(plate.matrixPlate[cx-i][cy+i] == null)
+    			result.add(new int[] {cx-i, cy+i});
+    		else if(plate.matrixPlate[cx-i][cy+i].colour != colour) {
+    			result.add(new int[] {cx-i, cy+i});
+    			break;
+    		}	
+    	}
+    	
+    	return result;
     }
 }

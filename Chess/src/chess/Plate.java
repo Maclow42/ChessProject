@@ -61,22 +61,16 @@ public class Plate {
      * @param piece
      * @param position 
      */
-    public boolean canMovePiece(Piece piece,int[] positionToGo){
-        
-        //Position sur laquelle le joueur souhaite déplacer sa pièce
-        int x2 = positionToGo[0];
-        int y2 = positionToGo[1]; 
-        
-        //Verifie si le mouvement est possible
-        if (piece.canMoveTo(this, positionToGo) == true) {
-        //Verifie si la case demandée est bien dans le plateau
-            if ((x2 >= 0 && x2 <= 7) && (y2 >= 0 && y2 <= 7)){
-                if (getPieceBetween(piece, positionToGo) == false){
-                    return true;
-                }
-            }
-        }
-        return false;
+    public boolean canMovePiece(Piece piece, int[] positionToGo){
+    	int x2 = positionToGo[0], y2 = positionToGo[1];
+    	
+    	if(this.matrixPlate[x2][y2].colour == piece.colour)
+    		return false;
+    	
+    	if(x2 < 0 || y2 < 0 || x2 > 7 || y2 > 7)
+    		return false;
+    	
+    	return piece.canMoveTo(this, positionToGo) && !getPieceBetween(piece, positionToGo);
     }
     
     public boolean movePiece(Piece piece, int[] positionToGo){

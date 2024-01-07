@@ -4,6 +4,10 @@
  */
 package chess;
 
+import java.util.ArrayList;
+
+import chess.Piece.colourPiece;
+
 /**
  *
  * @author PCdePret_2
@@ -72,6 +76,37 @@ public class Pawn extends Piece{
     return false;
     }
     
-
+    public static ArrayList<int[]> getAccessiblePositions(Plate plate, int[] currentPos) {
+    	int cx = currentPos[0], cy = currentPos[1];
+    	
+    	if(plate.matrixPlate[cx][cy] == null)
+    		return null;
+    	
+    	colourPiece colour = plate.matrixPlate[cx][cy].colour;
+    	
+    	ArrayList<int[]> result = new ArrayList<int[]>();
+    	
+    	if(colour == colourPiece.WHITE) {
+    		if(plate.matrixPlate[cx][cy].firstMove) {
+    			if(plate.matrixPlate[cx][cy+1] == null) {
+    				result.add(new int[] {cx, cy + 1});
+    				if(plate.matrixPlate[cx][cy+2] == null)
+        				result.add(new int[] {cx, cy + 2});
+    			}
+    		}else if(plate.matrixPlate[cx][cy+1] == null) {
+    				result.add(new int[] {cx, cy + 1});
+    	}
+    	
+    	//// VERIFIER QUE LES COORDONNEES SONT ENTRE 0 ET 7 INCLUS.	
+    		
+    	if(plate.matrixPlate[cx+1][cy+1] != null && plate.matrixPlate[cx+1][cy+1].colour != colour)
+    		result.add(new int[] {cx+1, cy + 1});
+    	
+    	if(plate.matrixPlate[cx-1][cy+1] != null && plate.matrixPlate[cx+1][cy+1].colour != colour)
+    		result.add(new int[] {cx+1, cy + 1});
+    	
+    		
+    	return result;
+    }
     
 }

@@ -5,6 +5,9 @@
 package chess;
 
 import java.lang.Math;
+import java.util.ArrayList;
+
+import chess.Piece.colourPiece;
 /**
  *
  * @author PCdePret_2
@@ -34,6 +37,39 @@ public class King extends Piece{
             return true;
         }
         return false;
+    }
+    
+    public static ArrayList<int[]> getAccessiblePositions(Plate plate, int[] currentPos) {
+    	int cx = currentPos[0], cy = currentPos[1];
+    	
+    	if(plate.matrixPlate[cx][cy] == null)
+    		return null;
+    	
+    	colourPiece colour = plate.matrixPlate[cx][cy].colour;
+    	
+    	ArrayList<int[]> result = new ArrayList<int[]>();
+    	
+    	int[][] relatives = {	
+    							{0, 1},
+    							{1, 1},
+    							{1, 0},
+    							{1, -1},
+    							{0, -1},
+    							{-1, -1},
+    							{-1, 0},
+    							{-1, 1}
+    						};
+    	
+    	for(int[] coords : relatives) {
+    		if(cx + coords[0] < 0 || cx + coords[0] > 7)
+    			continue;
+    		if(cy + coords[1] < 0 || cy + coords[1] > 7)
+    			continue;
+    		if(plate.matrixPlate[cx + coords[0]][cy + coords[1]] == null || plate.matrixPlate[cx + coords[0]][cy + coords[1]].colour != colour)
+    			result.add(new int[] {cx + coords[0], cy + coords[1]});
+    	}
+    	
+    	return result;
     }
                                                                                                            
         
