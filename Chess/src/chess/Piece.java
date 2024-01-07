@@ -25,7 +25,7 @@ public abstract class Piece {
     
     protected pieceType type;
 
-    protected static enum colourPiece{
+    public static enum colourPiece{
     	WHITE,
     	BLACK
     };
