@@ -37,7 +37,7 @@ public class Pawn extends Piece{
          * On sépare donc les cas : pion blanc et pion noir
          */
         //si le pion est noir
-        if (colour == Piece.colourPiece.BLACK){
+        if (colour == Piece.colourPiece.WHITE){
             //teste si la position testée est juste devant le pion
             if ((actualPosition[0] == testedPosition[0]) && (actualPosition[1] == testedPosition[1] - 1)){
                 return true;
@@ -105,8 +105,7 @@ public class Pawn extends Piece{
     	if(plate.matrixPlate[cx-1][cy+1] != null && plate.matrixPlate[cx+1][cy+1].colour != colour)
     		result.add(new int[] {cx+1, cy + 1});
     	
-    		
+        }	
     	return result;
-    }
-    
+        }
 }

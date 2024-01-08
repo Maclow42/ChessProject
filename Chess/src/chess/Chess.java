@@ -15,15 +15,14 @@ public class Chess {
      */
     public static void main(String[] args) {
         Plate plateau = new Plate();
-        int [] testedPosition1 = {2,2};
+        int [] testedPosition1 = {3,2};
         
-        Piece c1 = plateau.matrixPlate[1][0];
-        boolean test1 = plateau.movePiece(c1, testedPosition1);
+        Piece p1 = plateau.matrixPlate[3][1];
+        boolean test1 = plateau.movePiece(p1, testedPosition1);
         System.out.println(test1);
         
         
-        Piece test2 = plateau.matrixPlate[2][0];
-        System.out.println(test2.colour);
+        
         
         /*
         Queen dame = new Queen(true, 4);
